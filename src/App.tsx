@@ -11,6 +11,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import profilePic from "./assets/avatar/me.jpg";
 
 function App() {
   const [scrollY, setScrollY] = useState(0);
@@ -58,7 +59,14 @@ function App() {
   const skillCategories = [
     {
       title: "Web Development",
-      skills: ["PHP Laravel", "Nest.js", "Vue.js with Quasar", "React"],
+      skills: [
+        "PHP (Laravel)",
+        "Javascript/Typescript",
+        "Nest.js",
+        "Vue.js (Quasar)",
+        "React",
+        "FastApi",
+      ],
       color: "from-cyan-400 to-blue-500",
     },
     {
@@ -68,11 +76,11 @@ function App() {
     },
     {
       title: "AI & Machine Learning",
-      skills: ["Python", "Computer Vision", "Machine Learning", "FastAPI"],
+      skills: ["Python", "Computer Vision", "Machine Learning"],
       color: "from-purple-400 to-pink-500",
     },
     {
-      title: "DevOps & Tools",
+      title: "DevOps",
       skills: ["Git", "GitHub", "GitLab", "Linux", "Docker"],
       color: "from-orange-400 to-red-500",
     },
@@ -83,77 +91,65 @@ function App() {
     },
     {
       title: "ERP Systems",
-      skills: ["Odoo Technical Consulting"],
+      skills: ["Odoo"],
       color: "from-indigo-400 to-cyan-500",
     },
   ];
 
   const education = [
     {
-      degree: "Master's in Computer Science",
-      institution: "University Name",
+      degree: "Master's in Computer Vision",
+      institution:
+        "The University of Science and Technology – Houari Boumediene",
       period: "2020 - 2022",
-      location: "City, Country",
-      description:
-        "Specialized in Software Engineering and Artificial Intelligence",
+      location: "Algiers, Algeria",
+      description: "Specialized in Computer Vision and Artificial Intelligence",
       achievements: [
-        "Graduated with Honors",
+        /*"Graduated with Honors",
         "Research in Machine Learning",
-        "Published Papers",
+        "Published Papers",*/
       ],
     },
     {
       degree: "Bachelor's in Computer Science",
-      institution: "University Name",
+      institution:
+        "The University of Science and Technology – Houari Boumediene",
       period: "2017 - 2020",
-      location: "City, Country",
+      location: "Algiers, Algeria",
       description: "Foundation in Computer Science and Programming",
       achievements: [
-        "Dean's List",
+        /*"Dean's List",
         "Programming Competition Winner",
-        "Student Council Member",
+        "Student Council Member",*/
       ],
     },
   ];
 
   const experiences = [
     {
-      role: "Technical Consultant",
-      company: "Odoo Implementation Company",
-      period: "2022 - Present",
-      location: "Algeria",
-      description:
-        "Specialized in Odoo ERP system implementation and customization for various clients.",
-      achievements: [
-        "Implemented Odoo for 10+ companies",
-        "Customized modules for specific business needs",
-        "Trained client teams on system usage",
-      ],
-    },
-    {
       role: "Full Stack Developer",
-      company: "Tech Startup",
-      period: "2020 - 2022",
+      company: "Trybe Agency",
+      period: "2024 - Present",
       location: "Algeria",
       description:
         "Developed web applications using Laravel, Vue.js, and various modern technologies.",
       achievements: [
-        "Built scalable web applications",
+        /*"Built scalable web applications",
         "Implemented AI-powered features",
-        "Optimized database performance",
+        "Optimized database performance",*/
       ],
     },
     {
-      role: "AI Developer Intern",
-      company: "Research Lab",
-      period: "2019 - 2020",
-      location: "Remote",
+      role: "Technical Consultant",
+      company: "Weasydoo",
+      period: "2023 - 2024",
+      location: "Algeria",
       description:
-        "Worked on computer vision and machine learning projects using Python.",
+        "Specialized in Odoo ERP system implementation and customization for various clients.",
       achievements: [
-        "Developed image recognition models",
-        "Improved model accuracy by 15%",
-        "Published research findings",
+        /*"Implemented Odoo for 10+ companies",
+        "Customized modules for specific business needs",
+        "Trained client teams on system usage",*/
       ],
     },
   ];
@@ -276,17 +272,17 @@ function App() {
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <h1 className="text-6xl md:text-8xl font-bold mb-6 animate-pulse">
-            <span className="bg-gradient-to-r from-pink-500 via-cyan-400 to-purple-500 bg-clip-text text-transparent bg-300% animate-gradient">
-              SEIF EDDINE SEGUENI
+            <span className="bg-gradient-to-r from-pink-500 via-cyan-400 to-purple-500 bg-clip-text text-transparent bg-300 animate-gradient">
+              Seif Eddine Segueni
             </span>
           </h1>
           <div className="text-2xl md:text-3xl mb-8 text-cyan-400 font-mono animate-fade-in">
             <span className="animate-typewriter">Full Stack Developer</span>
           </div>
           <p className="text-lg md:text-xl mb-12 text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Passionate full-stack developer with expertise in web development,
-            AI, and ERP systems. Specialized in creating innovative solutions
-            using modern technologies.
+            Passionate full-stack developer with expertise in web development.
+            Specialized in creating innovative solutions using modern
+            technologies.
           </p>
           <div className="flex justify-center space-x-6 mb-12">
             <a
@@ -323,28 +319,24 @@ function App() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-lg text-gray-300 leading-relaxed">
-                I'm Seif Eddine Segueni, a passionate full-stack developer with
-                expertise in web development, artificial intelligence, and ERP
-                systems. I specialize in creating innovative solutions that
+                I'm Seif Eddine Segueni, 25 years old passionate full-stack developer with
+                expertise in web development and software engineering. I specialize in creating innovative solutions that
                 bridge technology and business needs.
               </p>
               <p className="text-lg text-gray-300 leading-relaxed">
-                With experience in Laravel, Vue.js, React, and Python, I've
-                worked on diverse projects from AI-powered applications to
-                complex ERP implementations. I'm passionate about leveraging
+                With experience in Laravel, Vue.js and Python, I've
+                worked on diverse projects covering different real life fields and needs. I'm passionate about leveraging
                 technology to solve real-world problems.
               </p>
               <div className="flex flex-wrap gap-4">
-                {["Laravel", "Vue.js", "React", "Python", "AI/ML", "Odoo"].map(
-                  (tech) => (
-                    <span
-                      key={tech}
-                      className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full border border-cyan-400/30 text-cyan-400 hover:scale-105 transition-transform"
-                    >
-                      {tech}
-                    </span>
-                  )
-                )}
+                {["Laravel", "Vue.js", "Nest.js", "Python"].map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full border border-cyan-400/30 text-cyan-400 hover:scale-105 transition-transform"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
             <div className="relative">
@@ -352,7 +344,7 @@ function App() {
                 <div className="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
                   <div className="w-64 h-64 rounded-full bg-gradient-to-br from-purple-600/50 to-pink-600/50 flex items-center justify-center">
                     <img
-                      src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400"
+                      src={profilePic}
                       alt="Seif Eddine Segueni"
                       className="w-60 h-60 rounded-full object-cover border-4 border-cyan-400/30"
                     />
@@ -613,7 +605,10 @@ function App() {
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-purple-500/30 bg-black/50">
         <div className="container mx-auto text-center text-gray-400">
-          <p>&copy; 2025 Seif Eddine Segueni. Crafted with ❤️ and lots of ☕</p>
+          <p>
+            &copy; 2025 Seif Eddine Segueni. The right man in the wrong place
+            can make all the difference in the world
+          </p>
         </div>
       </footer>
     </div>
