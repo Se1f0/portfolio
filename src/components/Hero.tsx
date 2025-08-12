@@ -31,10 +31,20 @@ const Hero: React.FC<HeroProps> = ({ scrollY, scrollToSection }) => {
       <div className="scanline"></div>
 
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6 pt-16 sm:pt-20 md:pt-0">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-6">
-          <span className="bg-gradient-to-r from-pink-500 via-cyan-400 to-purple-500 bg-clip-text text-transparent bg-300 animate-gradient glitch" data-text="Seif Eddine Segueni">
-            <span className="inline-block">Seif Eddine</span> <span className="inline-block">Segueni</span>
-          </span>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-6 cyberpunk-name">
+          <div className="relative inline-block">
+            <div className="cyberpunk-layers">
+              <span className="cyberpunk-layer" style={{ color: 'rgba(255, 0, 128, 0.7)', transform: 'translate(-4px, -4px)' }}>SEIF EDDINE</span>
+              <span className="cyberpunk-layer" style={{ color: 'rgba(0, 255, 255, 0.7)', transform: 'translate(4px, 4px)' }}>SEIF EDDINE</span>
+              <span className="cyberpunk-layer" style={{ color: 'white' }}>SEIF EDDINE</span>
+            </div>
+            <div className="cyberpunk-layers mt-2 md:mt-4">
+              <span className="cyberpunk-layer" style={{ color: 'rgba(0, 255, 255, 0.7)', transform: 'translate(-4px, -4px)' }}>SEGUENI</span>
+              <span className="cyberpunk-layer" style={{ color: 'rgba(255, 0, 128, 0.7)', transform: 'translate(4px, 4px)' }}>SEGUENI</span>
+              <span className="cyberpunk-layer" style={{ color: 'white' }}>SEGUENI</span>
+            </div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-transparent to-pink-500 opacity-30 blur-lg animate-pulse"></div>
+          </div>
         </h1>
         <div className="text-xl sm:text-2xl md:text-3xl mb-8 font-mono typewriter">
           <NeonText text="Full Stack Developer" color="cyan" />

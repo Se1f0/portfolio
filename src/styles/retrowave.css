@@ -101,6 +101,65 @@
   }
 }
 
+/* Cyberpunk Name Styling */
+.cyberpunk-name {
+  font-family: 'Orbitron', sans-serif, system-ui;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.cyberpunk-layers {
+  position: relative;
+  display: inline-block;
+}
+
+.cyberpunk-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.cyberpunk-layer:nth-child(3) {
+  position: relative;
+  z-index: 3;
+  text-shadow: 
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 20px #00ffff,
+    0 0 35px #ff00de,
+    0 0 40px #00ffff;
+  animation: cyberpunk-flicker 3s infinite alternate;
+}
+
+@keyframes cyberpunk-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #fff,
+      0 0 20px #00ffff,
+      0 0 35px #ff00de,
+      0 0 40px #00ffff;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+.cyberpunk-name:hover .cyberpunk-layer:nth-child(1) {
+  transform: translate(-6px, -6px) !important;
+  opacity: 0.8;
+}
+
+.cyberpunk-name:hover .cyberpunk-layer:nth-child(2) {
+  transform: translate(6px, 6px) !important;
+  opacity: 0.8;
+}
+
 /* Hover effects for cards */
 .retro-card {
   transition: all 0.3s ease;
