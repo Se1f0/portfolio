@@ -124,7 +124,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects, openModal }) => {
                         className="flex items-center gap-1 text-sm text-cyan-400 hover:text-pink-400 transition-colors neon-flicker"
                       >
                         <ExternalLink size={16} />
-                        Live Demo
+                        Live
                       </a>
                     )}
                   </div>
