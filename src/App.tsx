@@ -13,6 +13,7 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ImageModal from "./components/ImageModal";
+import RetroGrid from "./components/RetroGrid";
 
 // Import types
 import { NavLink, Project, SkillCategory, Education as EducationType, Experience as ExperienceType } from "./types";
@@ -369,6 +370,9 @@ function App() {
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Analytics />
       <SpeedInsights />
+      
+      {/* Retro Grid Background */}
+      <RetroGrid />
       
       {/* Header Component */}
       <Header 

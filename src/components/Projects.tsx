@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink, Github } from 'lucide-react';
 import { Project } from '../types';
+import NeonText from './NeonText';
 
 interface ProjectsProps {
   projects: Project[];
@@ -39,85 +40,92 @@ const Projects: React.FC<ProjectsProps> = ({ projects, openModal }) => {
     <section id="projects" className="py-20 px-6 relative">
       <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/10 to-pink-900/10"></div>
       <div className="container mx-auto max-w-6xl relative z-10">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-pink-400 to-cyan-500 bg-clip-text text-transparent">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-pink-400 to-cyan-500 bg-clip-text text-transparent neon-flicker">
           Projects
         </h2>
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <div key={index} className="group perspective-1000">
-              <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-lg overflow-hidden border border-cyan-400/20 hover:border-pink-400/40 transition-all duration-300 transform hover:rotateY-5 hover:scale-105 h-full flex flex-col">
+            <div key={index} className="group perspective-1000 floating" style={{animationDelay: `${index * 0.2}s`}}>
+              <div className="retro-card bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-lg overflow-hidden border border-cyan-400/20 hover:border-pink-400/40 transition-all duration-300 transform hover:rotateY-5 hover:scale-105 h-full flex flex-col">
                 <div className="aspect-video overflow-hidden relative cursor-pointer" onClick={() => openModal(index, currentImageIndex[index] || 0)}>
                   <img
                     src={project.images[currentImageIndex[index] || 0]}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    alt={`${project.title} screenshot`}
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute bottom-0 left-0 right-0 flex justify-between p-2">
-                    <button
-                      className="bg-black/50 hover:bg-black/70 text-white p-1 rounded-full transition-all hover:scale-110"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handlePrevImage(index);
-                      }}
-                    >
-                      <ChevronLeft size={16} />
-                    </button>
-                    <button
-                      className="bg-black/50 hover:bg-black/70 text-white p-1 rounded-full transition-all hover:scale-110"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleNextImage(index);
-                      }}
-                    >
-                      <ChevronRight size={16} />
-                    </button>
+                  {project.images.length > 1 && (
+                    <>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handlePrevImage(index);
+                        }}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 p-2 rounded-full text-white hover:bg-pink-500/70 transition-colors z-10"
+                        style={{ 
+                          boxShadow: '0 0 10px rgba(255, 0, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.4)', 
+                          border: '1px solid rgba(255, 0, 255, 0.7)'
+                        }}
+                      >
+                        <ChevronLeft size={20} />
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleNextImage(index);
+                        }}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 p-2 rounded-full text-white hover:bg-cyan-500/70 transition-colors z-10"
+                        style={{ 
+                          boxShadow: '0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.4)', 
+                          border: '1px solid rgba(0, 255, 255, 0.7)'
+                        }}
+                      >
+                        <ChevronRight size={20} />
+                      </button>
+                    </>
+                  )}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 text-xs text-white">
+                    {currentImageIndex[index] !== undefined
+                      ? `${currentImageIndex[index] + 1}/${project.images.length}`
+                      : `1/${project.images.length}`}
                   </div>
                 </div>
-                <div className="p-4 flex flex-col flex-grow">
-                  <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>
-                  <div className="h-32 overflow-y-auto mb-4 text-gray-300 text-sm">
-                    <p>{project.description}</p>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-bold mb-2">
+                    <NeonText text={project.title} color={index % 2 === 0 ? 'cyan' : 'pink'} />
+                  </h3>
+                  <p className="text-gray-300 mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tech.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-purple-900/50 to-pink-900/50 border border-purple-500/30 animate-gradient"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
-                  <div className="mt-auto">
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tech.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded text-xs text-cyan-400 border border-cyan-400/30"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    {(project.liveUrl || project.githubUrl) && (
-                      <>
-                        <div className="border-t border-gray-700/50 my-3"></div>
-                        <div className="flex flex-wrap gap-3">
-                          {project.liveUrl && (
-                            <a
-                              href={project.liveUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center px-3 py-1.5 bg-gradient-to-r from-pink-500/30 to-purple-500/30 rounded-md text-sm font-medium text-white border border-pink-500/40 hover:from-pink-500/40 hover:to-purple-500/40 transition-all hover:scale-105 shadow-sm"
-                            >
-                              <ExternalLink size={14} className="mr-1.5" />
-                              Live Demo
-                            </a>
-                          )}
-                          {project.githubUrl && (
-                            <a
-                              href={project.githubUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center px-3 py-1.5 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded-md text-sm font-medium text-white border border-cyan-500/40 hover:from-cyan-500/40 hover:to-blue-500/40 transition-all hover:scale-105 shadow-sm"
-                            >
-                              <Github size={14} className="mr-1.5" />
-                              GitHub
-                            </a>
-                          )}
-                        </div>
-                      </>
+                  <div className="mt-auto flex gap-4">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-sm text-cyan-400 hover:text-pink-400 transition-colors neon-flicker"
+                      >
+                        <Github size={16} />
+                        Code
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-sm text-cyan-400 hover:text-pink-400 transition-colors neon-flicker"
+                      >
+                        <ExternalLink size={16} />
+                        Live Demo
+                      </a>
                     )}
                   </div>
                 </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, MapPin } from 'lucide-react';
 import { Education as EducationType } from '../types';
+import NeonText from './NeonText';
 
 interface EducationProps {
   education: EducationType[];
@@ -11,28 +12,34 @@ const Education: React.FC<EducationProps> = ({ education }) => {
     <section id="education" className="py-20 px-6 relative">
       <div className="absolute inset-0 bg-gradient-to-r from-purple-900/10 to-cyan-900/10"></div>
       <div className="container mx-auto max-w-4xl relative z-10">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent neon-flicker">
           Education
         </h2>
-        <div className="space-y-8">
+        <div className="space-y-12">
           {education.map((edu, index) => (
-            <div key={index} className="group relative">
-              <div className="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-lg p-8 border border-pink-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:transform hover:scale-105">
+            <div key={index} className="group relative floating" style={{ animationDelay: `${index * 0.2}s` }}>
+              {/* Neon line connecting timeline items */}
+              {index < education.length - 1 && (
+                <div className="absolute left-1/2 top-full w-1 h-12 -translate-x-1/2 bg-gradient-to-b from-cyan-500 to-pink-500 z-0" 
+                     style={{ boxShadow: '0 0 8px rgba(0, 255, 255, 0.7)' }}></div>
+              )}
+              
+              <div className="retro-card bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-lg p-8 border border-pink-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:transform hover:scale-105">
                 <div className="flex flex-wrap justify-between items-start mb-4">
                   <div>
-                    <h3 className="text-2xl font-bold text-white mb-2">
-                      {edu.degree}
+                    <h3 className="text-2xl font-bold mb-2">
+                      <NeonText text={edu.degree} color="cyan" />
                     </h3>
-                    <h4 className="text-xl text-pink-400 mb-2">
-                      {edu.institution}
+                    <h4 className="text-xl mb-2">
+                      <NeonText text={edu.institution} color="pink" size="xl" />
                     </h4>
                   </div>
                   <div className="text-right">
-                    <div className="flex items-center text-gray-400 mb-1">
+                    <div className="flex items-center text-gray-400 mb-1 hover:text-cyan-400 transition-colors">
                       <Calendar size={16} className="mr-2" />
                       {edu.period}
                     </div>
-                    <div className="flex items-center text-gray-400">
+                    <div className="flex items-center text-gray-400 hover:text-pink-400 transition-colors">
                       <MapPin size={16} className="mr-2" />
                       {edu.location}
                     </div>
@@ -43,8 +50,15 @@ const Education: React.FC<EducationProps> = ({ education }) => {
                 </p>
                 <div className="space-y-2">
                   {edu.achievements.map((achievement, i) => (
-                    <div key={i} className="flex items-center text-cyan-400">
-                      <div className="w-2 h-2 bg-pink-400 rounded-full mr-3"></div>
+                    <div 
+                      key={i} 
+                      className="flex items-center text-cyan-400 transform hover:translate-x-2 transition-transform"
+                      style={{ animationDelay: `${i * 0.1}s` }}
+                    >
+                      <div 
+                        className="w-2 h-2 bg-pink-400 rounded-full mr-3 animate-pulse"
+                        style={{ boxShadow: '0 0 8px rgba(255, 0, 128, 0.7)' }}
+                      ></div>
                       {achievement}
                     </div>
                   ))}
