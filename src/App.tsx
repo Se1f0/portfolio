@@ -126,6 +126,25 @@ function App() {
   }, []);
 
   useEffect(() => {
+    // Set initial active section to hero
+    setActiveSection("hero");
+    
+    // Force scroll to top with multiple methods to ensure it works
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    
+    // Delay to ensure the scroll happens after component mount
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     const sections = [
       "hero",
       "about",
@@ -135,27 +154,56 @@ function App() {
       "projects",
       "contact",
     ];
+    
     const handleScroll = () => {
-      const current = sections.find((section) => {
+      // Find all sections and their positions
+      const sectionPositions = sections.map(section => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+          return { id: section, top: rect.top, bottom: rect.bottom };
         }
-        return false;
+        return null;
+      }).filter(Boolean) as Array<{ id: string; top: number; bottom: number }>;
+      
+      // Sort sections by their distance from the viewport top
+      const sortedSections = [...sectionPositions].sort((a, b) => {
+        const aDistance = Math.abs(a.top);
+        const bDistance = Math.abs(b.top);
+        return aDistance - bDistance;
       });
-      if (current) {
-        setActiveSection(current);
+      
+      // Find the first section that's either in view or closest to being in view
+      if (sortedSections.length > 0) {
+        // Special case for the last section (contact)
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+          setActiveSection("contact");
+        } else {
+          // Check if any section is in the viewport
+          const visibleSection = sectionPositions.find(section => 
+            section && section.top <= 100 && section.bottom >= 100
+          );
+          
+          if (visibleSection) {
+            setActiveSection(visibleSection.id);
+          } else if (sortedSections[0]) {
+            setActiveSection(sortedSections[0].id);
+          }
+        }
       }
     };
 
     window.addEventListener("scroll", handleScroll);
+    // Call once to set initial active section based on scroll position
+    setTimeout(handleScroll, 200);
+    
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: "smooth" });
+    setActiveSection(sectionId);
   };
 
   const navLinks: NavLink[] = [
