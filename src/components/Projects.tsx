@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink, Github } from 'lucide-react';
 import { Project } from '../types';
-import NeonText from './NeonText';
 
 interface ProjectsProps {
   projects: Project[];
@@ -90,8 +89,10 @@ const Projects: React.FC<ProjectsProps> = ({ projects, openModal }) => {
                   </div>
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold mb-2">
-                    <NeonText text={project.title} color={index % 2 === 0 ? 'cyan' : 'pink'} />
+                  <h3 className="text-xl font-bold mb-2 text-gradient">
+                    <span className={`${index % 2 === 0 ? 'text-cyan-400' : 'text-pink-400'}`}>
+                      {project.title}
+                    </span>
                   </h3>
                   <p className="text-gray-300 mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-4">

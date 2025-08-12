@@ -1,7 +1,6 @@
 import React from 'react';
 import { Calendar, MapPin } from 'lucide-react';
 import { Education as EducationType } from '../types';
-import NeonText from './NeonText';
 
 interface EducationProps {
   education: EducationType[];
@@ -27,11 +26,11 @@ const Education: React.FC<EducationProps> = ({ education }) => {
               <div className="retro-card bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-lg p-8 border border-pink-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:transform hover:scale-105">
                 <div className="flex flex-wrap justify-between items-start mb-4">
                   <div>
-                    <h3 className="text-2xl font-bold mb-2">
-                      <NeonText text={edu.degree} color="cyan" />
+                    <h3 className="text-2xl font-bold mb-2 text-cyan-400">
+                      {edu.degree}
                     </h3>
-                    <h4 className="text-xl mb-2">
-                      <NeonText text={edu.institution} color="pink" size="xl" />
+                    <h4 className="text-xl mb-2 text-pink-400">
+                      {edu.institution}
                     </h4>
                   </div>
                   <div className="text-right">

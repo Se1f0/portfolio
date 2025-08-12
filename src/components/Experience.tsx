@@ -1,7 +1,6 @@
 import React from 'react';
 import { Calendar, MapPin } from 'lucide-react';
 import { Experience as ExperienceType } from '../types';
-import NeonText from './NeonText';
 
 interface ExperienceProps {
   experiences: ExperienceType[];
@@ -27,11 +26,11 @@ const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
               <div className="retro-card bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg p-8 border border-cyan-400/20 hover:border-pink-400/40 transition-all duration-300 hover:transform hover:scale-105">
                 <div className="flex flex-wrap justify-between items-start mb-4">
                   <div>
-                    <h3 className="text-2xl font-bold mb-2">
-                      <NeonText text={exp.role} color="purple" />
+                    <h3 className="text-2xl font-bold mb-2 text-purple-400">
+                      {exp.role}
                     </h3>
-                    <h4 className="text-xl mb-2">
-                      <NeonText text={exp.company} color="cyan" size="xl" />
+                    <h4 className="text-xl mb-2 text-cyan-400">
+                      {exp.company}
                     </h4>
                   </div>
                   <div className="text-right">

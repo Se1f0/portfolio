@@ -1,6 +1,5 @@
 import React from 'react';
 import { SkillCategory } from '../types';
-import NeonText from './NeonText';
 
 interface SkillsProps {
   skillCategories: SkillCategory[];
@@ -23,10 +22,7 @@ const Skills: React.FC<SkillsProps> = ({ skillCategories }) => {
             >
               <div className="retro-card bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-lg p-6 border border-cyan-400/20 hover:border-pink-400/40 transition-all duration-300 transform hover:rotateY-5 hover:scale-105 h-full flex flex-col">
                 <h3 className="text-xl font-bold mb-4 text-center">
-                  <NeonText 
-                    text={category.title} 
-                    color={categoryIndex % 3 === 0 ? 'pink' : categoryIndex % 3 === 1 ? 'cyan' : 'purple'} 
-                  />
+                  {category.title}
                 </h3>
                 <div className="space-y-3">
                   {category.skills.map((skill, skillIndex) => (
