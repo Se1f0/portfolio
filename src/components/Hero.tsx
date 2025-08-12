@@ -26,16 +26,16 @@ const Hero: React.FC<HeroProps> = ({ scrollY, scrollToSection }) => {
         }}
       ></div>
 
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-        <h1 className="text-6xl md:text-8xl font-bold mb-6 animate-pulse">
+      <div className="relative z-10 text-center max-w-4xl mx-auto px-6 pt-16 sm:pt-20 md:pt-0">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-6 animate-pulse">
           <span className="bg-gradient-to-r from-pink-500 via-cyan-400 to-purple-500 bg-clip-text text-transparent bg-300 animate-gradient">
-            Seif Eddine Segueni
+            <span className="inline-block">Seif Eddine</span> <span className="inline-block">Segueni</span>
           </span>
         </h1>
-        <div className="text-2xl md:text-3xl mb-8 text-cyan-400 font-mono animate-fade-in">
+        <div className="text-xl sm:text-2xl md:text-3xl mb-8 text-cyan-400 font-mono animate-fade-in">
           <span className="animate-typewriter">Full Stack Developer</span>
         </div>
-        <p className="text-lg md:text-xl mb-12 text-gray-300 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-base sm:text-lg md:text-xl mb-12 text-gray-300 max-w-2xl mx-auto leading-relaxed">
           Passionate full-stack developer with expertise in web development.
           Specialized in creating innovative solutions using modern
           technologies.
