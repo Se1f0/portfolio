@@ -87,11 +87,6 @@ function App() {
       color: "from-orange-400 to-red-500",
     },
     {
-      title: "Project Management",
-      skills: ["ClickUp", "Discord", "Trello", "Postman"],
-      color: "from-pink-400 to-purple-500",
-    },
-    {
       title: "ERP Systems",
       skills: ["Odoo"],
       color: "from-indigo-400 to-cyan-500",
@@ -367,10 +362,10 @@ function App() {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-pink-400 to-cyan-500 bg-clip-text text-transparent">
             Skills
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {skillCategories.map((category) => (
-              <div key={category.title} className="group">
-                <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-lg p-6 border border-cyan-400/20 hover:border-pink-400/40 transition-all duration-300 hover:transform hover:scale-105">
+              <div key={category.title} className="group w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] xl:w-[calc(20%-1.6rem)]">
+                <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-lg p-6 border border-cyan-400/20 hover:border-pink-400/40 transition-all duration-300 hover:transform hover:scale-105 h-full">
                   <h3 className="text-xl font-bold text-white mb-4 text-center">
                     {category.title}
                   </h3>
