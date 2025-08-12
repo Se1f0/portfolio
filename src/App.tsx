@@ -72,6 +72,22 @@ function App() {
   const [currentModalProject, setCurrentModalProject] = useState<number | null>(null);
   const [currentModalImageIndex, setCurrentModalImageIndex] = useState<number>(0);
 
+  // Calculate age based on birth date
+  const calculateAge = () => {
+    const birthDate = new Date('1999-12-04');
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+    
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    
+    return age;
+  };
+  
+  const age = calculateAge();
+
   const openModal = (projectIndex: number, imageIndex: number) => {
     setCurrentModalProject(projectIndex);
     setCurrentModalImageIndex(imageIndex);
@@ -427,7 +443,7 @@ function App() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-lg text-gray-300 leading-relaxed">
-                I'm Seif Eddine Segueni, 25 years old passionate full-stack developer with
+                I'm Seif Eddine Segueni, {age} years old passionate full-stack developer with
                 expertise in web development and software engineering. I specialize in creating innovative solutions that
                 bridge technology and business needs.
               </p>
