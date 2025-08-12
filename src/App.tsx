@@ -12,6 +12,8 @@ import {
   ChevronRight,
 } from "lucide-react";
 import profilePic from "./assets/avatar/me.jpg";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 function App() {
   const [scrollY, setScrollY] = useState(0);
@@ -221,6 +223,8 @@ function App() {
   };
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      <Analytics />
+      <SpeedInsights />
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-purple-500/30">
         <div className="container mx-auto px-6 py-4">
