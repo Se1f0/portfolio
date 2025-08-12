@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import {
   ChevronDown,
   Github,
-  MessageCircle,
   Linkedin,
   Mail,
   Calendar,
@@ -12,6 +11,7 @@ import {
   ChevronRight,
   ExternalLink,
 } from "lucide-react";
+import { FaXTwitter, FaDiscord, FaWhatsapp } from "react-icons/fa6";
 import profilePic from "./assets/avatar/me.jpg";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
@@ -400,6 +400,13 @@ function App() {
             >
               <Linkedin size={24} />
             </a>
+            <a
+              href="https://x.com/Se1f01"
+              target="_blank"
+              className="p-3 rounded-full bg-gradient-to-r from-purple-900 to-indigo-800 hover:from-purple-800 hover:to-indigo-700 hover:scale-110 transition-all"
+            >
+              <FaXTwitter size={24} className="text-white" />
+            </a>
           </div>
           <button
             onClick={() => scrollToSection("about")}
@@ -467,7 +474,7 @@ function App() {
           <div className="flex flex-wrap justify-center gap-8">
             {skillCategories.map((category) => (
               <div key={category.title} className="group w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] xl:w-[calc(20%-1.6rem)]">
-                <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-lg p-6 border border-cyan-400/20 hover:border-pink-400/40 transition-all duration-300 hover:transform hover:scale-105 h-full flex flex-col">
+                <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-lg p-6 border border-cyan-400/20 hover:border-pink-400/40 transition-all duration-300 transform hover:rotateY-5 hover:scale-105 h-full flex flex-col">
                   <h3 className="text-xl font-bold text-white mb-4 text-center">
                     {category.title}
                   </h3>
@@ -704,7 +711,7 @@ function App() {
               rel="noopener noreferrer"
               className="group flex items-center space-x-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 px-8 py-4 rounded-full transition-all transform hover:scale-105"
             >
-              <MessageCircle size={24} />
+              <FaWhatsapp size={24} />
               <span className="text-lg font-semibold">WhatsApp</span>
             </a>
           </div>
@@ -714,8 +721,16 @@ function App() {
               <span>sesegueni@gmail.com</span>
             </p>
             <p className="flex items-center justify-center space-x-2">
+              <MapPin size={16} />
+              <span>Algiers, Algeria</span>
+            </p>
+            <p className="flex items-center justify-center space-x-2">
               <Phone size={16} />
               <span>+213 790410947</span>
+            </p>
+            <p className="flex items-center justify-center space-x-2">
+              <FaDiscord size={16} className="mr-1" />
+              <span>se1f0</span>
             </p>
           </div>
         </div>
