@@ -117,7 +117,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects, openModal }) => {
                         Code
                       </a>
                     )}
-                    {project.liveUrl && (
+                    {/* {project.liveUrl && (
                       <a
                         href={project.liveUrl}
                         target="_blank"
@@ -127,7 +127,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects, openModal }) => {
                         <ExternalLink size={16} />
                         Live
                       </a>
-                    )}
+                    )} */}
                   </div>
                 </div>
               </div>

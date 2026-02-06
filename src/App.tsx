@@ -56,6 +56,53 @@ import zx3 from "./assets/projects/zx/3.png";
 import zx4 from "./assets/projects/zx/4.png";
 import zx5 from "./assets/projects/zx/5.png";
 
+// TakwinDZ-B2B project images
+import takwin1 from "./assets/projects/takwin/1.png";
+import takwin2 from "./assets/projects/takwin/2.png";
+import takwin3 from "./assets/projects/takwin/3.png";
+import takwin4 from "./assets/projects/takwin/4.png";
+import takwin5 from "./assets/projects/takwin/5.png";
+import takwin6 from "./assets/projects/takwin/6.png";
+import takwin7 from "./assets/projects/takwin/7.png";
+import takwin8 from "./assets/projects/takwin/8.png";
+import takwin9 from "./assets/projects/takwin/9.png";
+import takwin10 from "./assets/projects/takwin/10.png";
+import takwin11 from "./assets/projects/takwin/11.png";
+import takwin12 from "./assets/projects/takwin/12.png";
+import takwin13 from "./assets/projects/takwin/13.png";
+import takwin14 from "./assets/projects/takwin/14.png";
+import takwin15 from "./assets/projects/takwin/15.png";
+import takwin16 from "./assets/projects/takwin/16.png";
+import takwin17 from "./assets/projects/takwin/17.png";
+import takwin18 from "./assets/projects/takwin/18.png";
+import takwin19 from "./assets/projects/takwin/19.png";
+import takwin20 from "./assets/projects/takwin/20.png";
+import takwin21 from "./assets/projects/takwin/21.png";
+import takwin22 from "./assets/projects/takwin/22.png";
+import takwin23 from "./assets/projects/takwin/23.png";
+import takwin24 from "./assets/projects/takwin/24.png";
+
+// Alpha Consult project images
+import alpha1 from "./assets/projects/alpha/1.png";
+import alpha2 from "./assets/projects/alpha/2.png";
+import alpha3 from "./assets/projects/alpha/3.png";
+import alpha4 from "./assets/projects/alpha/4.png";
+import alpha5 from "./assets/projects/alpha/5.png";
+import alpha6 from "./assets/projects/alpha/6.png";
+import alpha7 from "./assets/projects/alpha/7.png";
+import alpha8 from "./assets/projects/alpha/8.png";
+import alpha9 from "./assets/projects/alpha/9.png";
+import alpha10 from "./assets/projects/alpha/10.png";
+import alpha11 from "./assets/projects/alpha/11.png";
+import alpha12 from "./assets/projects/alpha/12.png";
+import alpha13 from "./assets/projects/alpha/13.png";
+import alpha14 from "./assets/projects/alpha/14.png";
+import alpha15 from "./assets/projects/alpha/15.png";
+import alpha16 from "./assets/projects/alpha/16.png";
+import alpha17 from "./assets/projects/alpha/17.png";
+import alpha18 from "./assets/projects/alpha/18.png";
+import alpha19 from "./assets/projects/alpha/19.png";
+
 // Lung Cancer Detector project images
 import pfe1 from "./assets/projects/pfe/1.png";
 import pfe2 from "./assets/projects/pfe/2.png";
@@ -80,14 +127,14 @@ function App() {
     const today = new Date();
     let age = today.getFullYear() - birthDate.getFullYear();
     const monthDifference = today.getMonth() - birthDate.getMonth();
-    
+
     if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
       age--;
     }
-    
+
     return age;
   };
-  
+
   const age = calculateAge();
 
   const openModal = (projectIndex: number, imageIndex: number) => {
@@ -104,7 +151,7 @@ function App() {
 
   const nextModalImage = () => {
     if (currentModalProject === null) return;
-    
+
     const projectImages = projects[currentModalProject].images;
     const nextIndex = (currentModalImageIndex + 1) % projectImages.length;
     setCurrentModalImageIndex(nextIndex);
@@ -113,7 +160,7 @@ function App() {
 
   const prevModalImage = () => {
     if (currentModalProject === null) return;
-    
+
     const projectImages = projects[currentModalProject].images;
     const prevIndex = (currentModalImageIndex - 1 + projectImages.length) % projectImages.length;
     setCurrentModalImageIndex(prevIndex);
@@ -129,19 +176,19 @@ function App() {
   useEffect(() => {
     // Set initial active section to hero
     setActiveSection("hero");
-    
+
     // Force scroll to top with multiple methods to ensure it works
     window.scrollTo(0, 0);
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    
+
     // Delay to ensure the scroll happens after component mount
     const timer = setTimeout(() => {
       window.scrollTo(0, 0);
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
     }, 100);
-    
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -155,7 +202,7 @@ function App() {
       "projects",
       "contact",
     ];
-    
+
     const handleScroll = () => {
       // Find all sections and their positions
       const sectionPositions = sections.map(section => {
@@ -166,14 +213,14 @@ function App() {
         }
         return null;
       }).filter(Boolean) as Array<{ id: string; top: number; bottom: number }>;
-      
+
       // Sort sections by their distance from the viewport top
       const sortedSections = [...sectionPositions].sort((a, b) => {
         const aDistance = Math.abs(a.top);
         const bDistance = Math.abs(b.top);
         return aDistance - bDistance;
       });
-      
+
       // Find the first section that's either in view or closest to being in view
       if (sortedSections.length > 0) {
         // Special case for the last section (contact)
@@ -181,10 +228,10 @@ function App() {
           setActiveSection("contact");
         } else {
           // Check if any section is in the viewport
-          const visibleSection = sectionPositions.find(section => 
+          const visibleSection = sectionPositions.find(section =>
             section && section.top <= 100 && section.bottom >= 100
           );
-          
+
           if (visibleSection) {
             setActiveSection(visibleSection.id);
           } else if (sortedSections[0]) {
@@ -197,7 +244,7 @@ function App() {
     window.addEventListener("scroll", handleScroll);
     // Call once to set initial active section based on scroll position
     setTimeout(handleScroll, 200);
-    
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -294,6 +341,15 @@ function App() {
         "Optimized database performance",*/
       ],
     },
+      {
+          role: "Part-Time Backend Developer",
+          company: "Kerya",
+          period: "Jul 2025 - Oct 2025",
+          location: "Algeria",
+          description:
+              "Fixed issues, implemented code improvements, and monitored server performance.",
+          achievements: [],
+      },
     {
       role: "Technical Consultant",
       company: "Weasydoo",
@@ -310,6 +366,24 @@ function App() {
   ];
 
   const projects: Project[] = [
+    {
+      title: "Alpha Consult",
+      description:
+        "A field force management platform with a Filament-powered back office and a mobile app API. Admins can create regions using interactive maps (wilaya/city borders or custom polygons), manage users with role-based access, and assign regions. Regional Directors create zones and sectors, assign them to delegates, and review visits, contacts, events, and activities submitted via the mobile app. Features monthly report review, KPI dashboards, and a structured hierarchy of Medical & Commercial delegates performing field operations.",
+      tech: ["Laravel", "Filament", "PostgreSQL", "REST API"],
+      images: [alpha1, alpha2, alpha3, alpha4, alpha5, alpha6, alpha7, alpha8, alpha9, alpha10, alpha11, alpha12, alpha13, alpha14, alpha15, alpha16, alpha17, alpha18, alpha19],
+      liveUrl: "",
+      githubUrl: "",
+    },
+    {
+      title: "TakwinDZ-B2B",
+      description:
+        "A B2B platform connecting trainers, companies, and schools, enabling them to post and apply to various announcements. Features a multi-step registration flow with role selection, Google OAuth, and a subscription system supporting online payments via SlickPay and offline payments with admin validation. Includes a Filament-powered back office for managing users, subscriptions, payments, plans, announcements, and reviews. Users can create and apply to announcements, view applicants, browse profiles, and stay informed through an integrated notification system (in-platform and email).",
+      tech: ["Laravel", "Filament", "MySQL", "REST API", "SlickPay"],
+      images: [takwin1, takwin2, takwin3, takwin4, takwin5, takwin6, takwin7, takwin8, takwin9, takwin10, takwin11, takwin12, takwin13, takwin14, takwin15, takwin16, takwin17, takwin18, takwin19, takwin20, takwin21, takwin22, takwin23, takwin24],
+      liveUrl: "",
+      githubUrl: "",
+    },
     {
       title: "TR Verify",
       description:
@@ -370,21 +444,21 @@ function App() {
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Analytics />
       <SpeedInsights />
-      
+
       {/* Retro Grid Background */}
       <RetroGrid />
-      
+
       {/* Header Component */}
-      <Header 
-        activeSection={activeSection} 
-        scrollToSection={scrollToSection} 
-        navLinks={navLinks} 
+      <Header
+        activeSection={activeSection}
+        scrollToSection={scrollToSection}
+        navLinks={navLinks}
       />
 
       {/* Hero Component */}
-      <Hero 
-        scrollY={scrollY} 
-        scrollToSection={scrollToSection} 
+      <Hero
+        scrollY={scrollY}
+        scrollToSection={scrollToSection}
       />
 
       {/* About Component */}
@@ -400,9 +474,9 @@ function App() {
       <Experience experiences={experiences} />
 
       {/* Projects Component */}
-      <Projects 
-        projects={projects} 
-        openModal={openModal} 
+      <Projects
+        projects={projects}
+        openModal={openModal}
       />
 
       {/* Contact Component */}
@@ -412,7 +486,7 @@ function App() {
       <Footer />
 
       {/* Image Modal Component */}
-      <ImageModal 
+      <ImageModal
         modalImage={modalImage}
         closeModal={closeModal}
         nextModalImage={nextModalImage}
